@@ -4,7 +4,7 @@ instructions:
 cd user/oracle-instantclient
 abuild checksum
 abuild unpack
-abuild-keygen -a
+abuild-keygen -a -n
 abuild -r
 
 cd ~/packages/user/x86_64
