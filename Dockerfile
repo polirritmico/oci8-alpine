@@ -15,16 +15,17 @@ RUN adduser -u 1001 -G abuild -s /bin/sh -D ci && \
 # RUN install -d -o ci -m 777 /home/ci/.abuild
 # RUN install -d -o ci -m 777 /home/ci/repos/alpine
 #
+
 USER ci
 WORKDIR /home/ci/aports
-#
+
 # RUN git config --global --add safe.directory /home/ci/aports && \
 #     sed -i "s/JOBS=[0-9]*/JOBS=$(nproc)/" /etc/abuild.conf
 #
 # RUN mkdir -p user/oracle-instantclient && \
 #     chown -R ci:abuild user && \
 #     chmod -R 775 user
-#
+
 COPY --chown=ci:abuild ./user/oracle-instantclient ./user/oracle-instantclient
 
 # COPY --chown=ci:abuild build.sh /home/ci/build.sh
