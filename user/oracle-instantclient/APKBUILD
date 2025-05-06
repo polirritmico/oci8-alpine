@@ -1,7 +1,7 @@
 pkgname=oracle-instantclient
-pkgver=18.9.0.0.0
+pkgver=19.8.0.0.0
 _versuffix=dbru
-_verurl=${pkgver//./}
+_verurl=19800
 _vermajor=${pkgver%%.*}
 _verminor=${pkgver#*.}; _verminor=${_verminor%%.*}
 pkgrel=1
