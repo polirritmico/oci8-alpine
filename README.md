@@ -7,7 +7,7 @@ example):
 
 ```bash
 docker build -t oracle-instantclient-builder .
-docker run --rm -it -v $PWD/build:/home/ci/packages oracle-instantclient-builder
+docker run --rm -it -v "$PWD/build":/home/ci/builds oracle-instantclient-builder
 ```
 
 After, check the `build` directory to get the generated Alpine apk packages.
