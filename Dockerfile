@@ -11,9 +11,7 @@ RUN adduser -u 1001 -G abuild -s /bin/sh -D ci && \
 
 # NOTE: Oracle Instant Client v19.8.0.0 requires libnsl.so.1. This library
 # version is not available in Alpine >= v3. A simple workaround is to make a
-# symbolic link from the current version to libnsl.so.1. Check the next RUN:
-
-# WARN: REPLICATE THIS SYMBOLIC LINK IN THE IMAGE WHEN USING THE GENERATED PACKAGES
+# symbolic link from the current version to libnsl.so.1.
 RUN ln -sn /usr/lib/libnsl.so.3 /usr/lib/libnsl.so.1
 
 USER ci
