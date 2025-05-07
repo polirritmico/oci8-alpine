@@ -9,9 +9,11 @@ RUN adduser -u 1001 -G abuild -s /bin/sh -D ci && \
     addgroup ci wheel && \
     echo "permit nopass :wheel as root" > /etc/doas.d/doas.conf
 
-# NOTE: Oracle Instant Client v19.8.0.0 requires libnsl.so.1. This library is
-# not available in Alpine Linux repositories for versions ≥ v3. If needed, you
-# may try installing a pre-Alpine v3 libnsl package.
+# NOTE: Oracle Instant Client v19.8.0.0 requires libnsl.so.1. This library
+# version is not available in Alpine >= v3. A simple workaround is to make a
+# symbolic link from the current version to libnsl.so.1. Check the next RUN:
+
+# WARN: REPLICATE THIS SYMBOLIC LINK IN THE IMAGE WHEN USING THE GENERATED PACKAGES
 RUN ln -sn /usr/lib/libnsl.so.3 /usr/lib/libnsl.so.1
 
 USER ci
