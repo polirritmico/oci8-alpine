@@ -2,7 +2,7 @@ pkgname=oracle-instantclient
 # pkgver=21.11.0.0.0 default version
 pkgver=19.8.0.0.0
 _versuffix=dbru
-_verurl=$(echo "$pkver" | sed 's/\.//g; s/.$//')
+_verurl=$(echo "$pkgver" | sed 's/\.//g; s/.$//')
 _vermajor=${pkgver%%.*}
 _verminor=${pkgver#*.}; _verminor=${_verminor%%.*}
 pkgrel=1
