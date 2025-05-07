@@ -18,8 +18,8 @@ USER ci
 
 WORKDIR /home/ci
 COPY --chown=ci:abuild ./user/oracle-instantclient aports/user/oracle-instantclient
-COPY --chown=ci:abuild build.sh .
-RUN chmod +x build.sh
+COPY --chown=ci:abuild packages_builder.sh .
+RUN chmod +x packages_builder.sh
 
 WORKDIR /home/ci/aports/user/oracle-instantclient
-ENTRYPOINT ["sh", "/home/ci/build.sh"]
+ENTRYPOINT ["sh", "/home/ci/packages_builder.sh"]
