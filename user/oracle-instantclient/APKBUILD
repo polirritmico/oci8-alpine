@@ -29,6 +29,7 @@ source="https://download.oracle.com/otn_software/linux/instantclient/$_verurl/in
 	https://download.oracle.com/otn_software/linux/instantclient/$_verurl/instantclient-sdk-linux.x64-${pkgver}$_versuffix.zip
 	https://download.oracle.com/otn_software/linux/instantclient/$_verurl/instantclient-sqlplus-linux.x64-${pkgver}$_versuffix.zip
 	oracompat.c
+	libnsl.so.1
 	"
 builddir="$srcdir/instantclient_${_vermajor}_${_verminor}"
 # !strip is workaround for patchelf bug(?), see https://github.com/NixOS/patchelf/issues/244
@@ -76,6 +77,8 @@ package() {
 	mkdir -p "$libdir"
 	cp -r *.so *.so.* *.jar "$libdir"/
 	install -m 644 BASIC_LITE_LICENSE "$libdir"/LICENSE
+
+    install -m 755 "$srcdir/libnsl.so.1" "$pkgdir"/usr/lib/
 
 	install -m 755 liboracompat.so.0 "$libdir"/
 
