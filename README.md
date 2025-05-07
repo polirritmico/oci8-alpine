@@ -24,10 +24,7 @@ RUN apk add --allow-untrusted oracle-instantclient-oci-<version>.apk
 
 > [!NOTE]
 >
-> Instantclient <= v19 requires `libnsl.so.1`. A workaround is to add a symbolic
-> link to the version provided by the `libnsl` alpine package:
->
-> ```Dockerfile
-> RUN apk add --no-cache -y libnsl
-> RUN ln -sn /usr/lib/libnsl.so.3 /usr/lib/libnsl.so.1
-> ```
+> Instantclient <= v19 requires `libnsl.so.1`. As a workarround, instead of
+> manually creating a symbolic link to the **so** file provided by the `libnsl`
+> alpine package, a copy of `libnsl.so.3.0.0` renamed to `libnsl.so.1` is
+> included into the generated package.
