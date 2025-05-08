@@ -1,11 +1,13 @@
 FROM alpine:3.21
 
+ARG HOST_UID=1000
+
 ENV BUILD_REPOS="user"
 
 RUN apk add --no-cache alpine-sdk lua-aports git shadow patch doas \
     gcompat libaio libnsl libtirpc-dev patchelf
 
-RUN adduser -u 1001 -G abuild -s /bin/sh -D ci && \
+RUN adduser -u ${HOST_UID} -G abuild -s /bin/sh -D ci && \
     addgroup ci wheel && \
     echo "permit nopass :wheel as root" > /etc/doas.d/doas.conf
 
